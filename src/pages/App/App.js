@@ -1,8 +1,9 @@
-// import logo from '../../logo.svg';
+
 import './App.css';
 import React, { Component } from 'react';
 import { Route } from "react-router-dom";
-import ShipList from "../StarshipsList/StarshipsList"
+import ShipList from "../StarshipsList/StarshipsList";
+import ShipDetails from "../StarshipsDetails/StarshipsDetails";
 
 class App extends Component {
   state = {  }
@@ -10,7 +11,20 @@ class App extends Component {
     return (
       <>
         <h1>App</h1>
-        <Route exact path='/shiplist' render={() => <ShipList />} />
+        <a href="/shiplist">Shiplist</a>
+        <Route
+            exact path='/shiplist'
+            render={() =>
+            <ShipList
+            />}
+        />
+        <Route
+            exact path='/shipdetails'
+            render={( {location} ) =>
+            <ShipDetails
+              location={location}
+            />}
+        />
       </>
      );
   }

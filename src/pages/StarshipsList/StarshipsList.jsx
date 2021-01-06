@@ -12,24 +12,21 @@ class ShipList extends Component {
         this.setState({ results: shipData.results })
       }
 
-    render() {
+      render() {
         return (
             <>
-              <h1>Starships List
-                {this.state.results.map((shipName, idx) => (
-                    <div key={idx}>
-                        <Link to={{
-                            pathname: '/starships',
-                            state: { shipName }
+            {this.state.results.map((shipName) => (
+                <div key={shipName.index}>
+                    <Link to={{
+                        pathname: '/shipdetails',
+                        state: { shipName }
                         }}>
-                        {shipName.name}
-                        </Link>
-                    </div>
-                ))}
-               </h1>
+                    {shipName.name}
+                    </Link>
+                </div>
+            ))}
             </>
-         );
+        );
     }
 }
-
 export default ShipList;
