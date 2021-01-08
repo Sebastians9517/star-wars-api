@@ -10,21 +10,26 @@ class ShipList extends Component {
      async componentDidMount() {
         const shipData = await getAllStarships()
         this.setState({ results: shipData.results })
+        console.log(shipData.results)
       }
 
       render() {
         return (
             <>
+            <div className="listItems">
             {this.state.results.map((shipName) => (
                 <div key={shipName.index}>
                     <Link to={{
                         pathname: '/shipdetails',
                         state: { shipName }
                         }}>
-                    {shipName.name}
+                        <button>
+                            {shipName.name}
+                        </button>
                     </Link>
                 </div>
             ))}
+            </div>
             </>
         );
     }

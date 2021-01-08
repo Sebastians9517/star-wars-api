@@ -2,16 +2,26 @@
 import './App.css';
 import React, { Component } from 'react';
 import { Route } from "react-router-dom";
+import NavBar from "../../components/NavBar/NavBar"
 import ShipList from "../StarshipsList/StarshipsList";
 import ShipDetails from "../StarshipsDetails/StarshipsDetails";
 
 class App extends Component {
-  state = {  }
+  state = {
+    navItems: [
+      {url: "/", name: "Home"},
+      {url: "/shiplist", name: "All ships"}
+    ]
+   }
+
   render() {
     return (
       <>
-        <h1>App</h1>
-        <a href="/shiplist">Shiplist</a>
+       <div className="header">
+        <h1>Galactic Shipyard</h1>
+        <NavBar navItems={this.state.navItems} />
+       </div>
+
         <Route
             exact path='/shiplist'
             render={() =>
